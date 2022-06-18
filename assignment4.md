@@ -14,7 +14,6 @@ Output:
 1
 3
 ```
-
 Return value:
 ```
 [1, 3]
@@ -51,11 +50,43 @@ Return value:
 
 | Line | Action | Object | Side Effect | Return Value | Is Return Value Used? |
 | ---- | ------ | ------ | ----------- | ------------ | --------------------- |
-| 1 | Assignment of my_arr | The return value of the each method call on a nested array | None | None | No |
+| 1 | Variable assignment | The return value of the each method call on a nested array | None | [[18, 7], [3, 12]] | No |
 | 1 | Method call (each) | Outer array | None | Outer array | Yes, the return value is used for the assignment of local variable my_arr |
-| 1 - 7 | Block execution | Sub-array | None | Sub-array | No |
-| 2 | Method call (each) | Sub-array | None | Sub-array | No |
-| 2 - 6 | Block execution | Elements of sub-array | None | nil if condition is met, nil if condition isn't met | No |
-| 3 - 5 | Conditional if | Sub-array element | Output the sub-array element if condition is met | nil if condition is met, nil if condition isn't met | No |
-| 4 | Method call (puts) | Sub-array element | Output the sub-array element | nil | No |
+| 1 - 7 | Outer block execution | Each sub-array | None | Each sub-array | No |
+| 2 | Method call (each) | Sub-array | None | Sub-array | Yes, used to determine return value of outer block |
+| 2 - 6 | Block execution | Element of sub-array in that iteration | None | nil if condition is met, nil if condition isn't met | No |
+| 3 | Comparison (>) | Element of sub-array in that iteration | None | Boolean | Yes, evaluated by if |
+| 3 - 5 | Conditional (if) | The result of the expression num > 5 | None | nil | Yes, used to determine return value of inner block |
+| 4 | Method call (puts) | Element of sub-array in that iteration | Output a string representation of an integer | nil | Yes, used to determine the return value of the conditional statement if the condition is met |
 
+## Example 5
+
+
+
+
+
+
+
+```ruby
+[[1, 2], [3, 4]].map do |arr|
+  arr.map do |num|
+    num * 2
+  end
+end
+```
+
+Output:
+```
+
+```
+Return value:
+```
+[[2, 4], [6, 8]]
+```
+
+| Line | Action | Object | Side Effect | Return Value | Is Return Value Used? |
+| ---- | ------ | ------ | ----------- | ------------ | --------------------- |
+| 1 | Method call (outer map) | Outer array | None | [[2, 4], [6, 8]] | No |
+| 1 - 5 | Outer block execution | Sub-array | None | [2, 4] and [6, 8] | Yes. It determines the return value of the first map method call. |
+| 2 | Method call (inner map) | Sub-array | None | [2, 4] and [6, 8] | Yes. It determines the return value of the first map method call. |
+| 2 - 4 | Block execution |
