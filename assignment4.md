@@ -61,12 +61,6 @@ Return value:
 
 ## Example 5
 
-
-
-
-
-
-
 ```ruby
 [[1, 2], [3, 4]].map do |arr|
   arr.map do |num|
@@ -86,7 +80,9 @@ Return value:
 
 | Line | Action | Object | Side Effect | Return Value | Is Return Value Used? |
 | ---- | ------ | ------ | ----------- | ------------ | --------------------- |
-| 1 | Method call (outer map) | Outer array | None | [[2, 4], [6, 8]] | No |
-| 1 - 5 | Outer block execution | Sub-array | None | [2, 4] and [6, 8] | Yes. It determines the return value of the first map method call. |
-| 2 | Method call (inner map) | Sub-array | None | [2, 4] and [6, 8] | Yes. It determines the return value of the first map method call. |
-| 2 - 4 | Block execution |
+| 1 | Method call (map) | Outer array | None | [[2, 4], [6, 8]] | No |
+| 1 - 5 | Outer block execution | Each sub-array | None | [2, 4] and [6, 8] | Yes. It determines the return value of the outer array. |
+| 2 | Method call (map) | Sub-array | None | [2, 4] and [6, 8] | Yes. It determines the return value of the first map method call. |
+| 2 - 4 | Block execution | Element of the sub-array in that iteration | None | 2 4 6 8 | Yes. It determines the return value of the second map method call. |
+| 3 | * operator | Element of the sub-array in that iteration | None | 2 4 6 8 | Yes. It determines the return value of the second map method call. |
+
