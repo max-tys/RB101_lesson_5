@@ -81,8 +81,8 @@ Return value:
 | Line | Action | Object | Side Effect | Return Value | Is Return Value Used? |
 | ---- | ------ | ------ | ----------- | ------------ | --------------------- |
 | 1 | Method call (map) | Outer array | None | [[2, 4], [6, 8]] | No |
-| 1 - 5 | Outer block execution | Each sub-array | None | [2, 4] and [6, 8] | Yes. It determines the return value of the outer array. |
-| 2 | Method call (map) | Sub-array | None | [2, 4] and [6, 8] | Yes. It determines the return value of the first map method call. |
-| 2 - 4 | Block execution | Element of the sub-array in that iteration | None | 2 4 6 8 | Yes. It determines the value of the sub-array arr. |
-| 3 | * operator | Element of the sub-array in that iteration | None | 2 4 6 8 | Yes. It determines the new value of the element of the sub-array. |
+| 1 - 5 | Outer block execution | Each sub-array | None | [2, 4] and [6, 8] | Yes. It is used by the top-level map for transformation. |
+| 2 | Method call (map) | Sub-array | None | [2, 4] and [6, 8] | Yes. It determines the return value of the outer block. |
+| 2 - 4 | Inner block execution | Element of the sub-array in that iteration | None | 2 4 6 8 | Yes. It is used by the inner map for transformation. |
+| 3 | Method call (*) with integer 2 as an argument | Element of the sub-array in that iteration | None | 2 4 6 8 | Yes. It determines the return value of the inner block. |
 
