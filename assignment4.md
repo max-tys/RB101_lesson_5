@@ -9,6 +9,15 @@
 end
 ```
 
+Output:
+> 1
+> 3
+
+Return value:
+```
+[1, 3]
+```
+
 | Line | Action | Object | Side Effect | Return Value | Is Return Value Used? |
 | ---- | ------ | ------ | ----------- | ------------ | --------------------- |
 | Line 1| Method call (map) | Outer array | No side effect | New array [1, 3] | Return value is unused. |
