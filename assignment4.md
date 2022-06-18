@@ -10,8 +10,10 @@ end
 ```
 
 Output:
-> 1
-> 3
+```
+1
+3
+```
 
 Return value:
 ```
@@ -35,12 +37,25 @@ my_arr = [[18, 7], [3, 12]].each do |arr|
   end
 end
 ```
+
+Output:
+```
+18
+7
+12
+```
+Return value:
+```
+[[18, 7], [3, 12]]
+```
+
 | Line | Action | Object | Side Effect | Return Value | Is Return Value Used? |
 | ---- | ------ | ------ | ----------- | ------------ | --------------------- |
-| 1 | Assignment of my_arr | The return value of the each method call on a nested array | Creates a local variable | None | No |
+| 1 | Assignment of my_arr | The return value of the each method call on a nested array | None | None | No |
 | 1 | Method call (each) | Outer array | None | Outer array | Yes, the return value is used for the assignment of local variable my_arr |
 | 1 - 7 | Block execution | Sub-array | None | Sub-array | No |
 | 2 | Method call (each) | Sub-array | None | Sub-array | No |
-| 2 - 6 | Block execution | Elements of sub-array | None | ?? | No |
-| 3 - 5 | Conditional if | Sub-array element | Output the sub-array element if condition is met | Nil if condition is met, nil if condition isn't met | No |
-| 4 | Method call (puts) | Sub-array element | Output the sub-array element | Nil | No |
+| 2 - 6 | Block execution | Elements of sub-array | None | nil if condition is met, nil if condition isn't met | No |
+| 3 - 5 | Conditional if | Sub-array element | Output the sub-array element if condition is met | nil if condition is met, nil if condition isn't met | No |
+| 4 | Method call (puts) | Sub-array element | Output the sub-array element | nil | No |
+
